@@ -155,8 +155,30 @@ function petStage(mood, size = '', extra = '', pet = defaultPet()) {
   const inner = pet.id === 'custom' && pet.img
     ? `<div class="pet custom"><img src="${pet.img}" alt=""></div>`
     : (PETS[pet.id] || PETS.chihuahua).svg();
-  return `<div class="pet-stage ${size} mood-${mood} ${extra}"><div class="pet-shadow"></div><div class="pet-jumper">${inner}</div></div>`;
+  return `<div class="pet-stage ${size} mood-${mood} ${extra}" data-say="${esc(petInfo(pet).say)}"><div class="pet-shadow"></div><div class="pet-jumper">${inner}</div></div>`;
 }
+
+// Al tocar una mascota: salta y dice su onomatopeya en una burbuja.
+function pokePet(stage) {
+  const sad = stage.classList.contains('mood-sad');
+  stage.querySelectorAll('.say-bubble').forEach(b => b.remove());
+  const bubble = document.createElement('span');
+  bubble.className = 'say-bubble';
+  bubble.textContent = sad ? stage.dataset.say.replace(/[¡!]/g, '') + '…' : stage.dataset.say;
+  stage.appendChild(bubble);
+  setTimeout(() => bubble.remove(), 1500);
+  stage.classList.remove('poke');
+  void stage.offsetWidth; // reinicia el saltito
+  stage.classList.add('poke');
+}
+// En fase de captura para que tocar la mascota de una tarjeta no abra la meta.
+// En los selectores de mascota (Ajustes / formulario) el toque sigue sirviendo para elegir.
+document.addEventListener('click', e => {
+  const stage = e.target.closest('.pet-stage');
+  if (!stage || e.target.closest('[data-pet], [data-gpet]')) return;
+  e.stopPropagation();
+  pokePet(stage);
+}, true);
 
 /* ---------- Router ---------- */
 const app = document.getElementById('app');

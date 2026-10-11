@@ -404,3 +404,28 @@ button { cursor: pointer; border: 0; background: none; padding: 0; }
 .upcoming li:last-child { border-bottom: 0; }
 .upcoming small { color: var(--muted); display: block; }
 .playground .row-btns .btn { font-size: 14px; }
+
+/* Burbuja al tocar la mascota */
+.pet-stage { cursor: pointer; }
+.pet-stage.poke { animation: poke .45s ease; }
+@keyframes poke { 0%, 100% { translate: 0 0; } 40% { translate: 0 -10%; } }
+.say-bubble {
+  position: absolute; left: 50%; bottom: 86%; z-index: 4;
+  background: #fff; color: var(--salmon-deep); font-weight: 800; font-size: 16px; line-height: 1;
+  padding: 8px 13px; border-radius: 16px; white-space: nowrap; pointer-events: none;
+  box-shadow: 0 6px 16px rgba(46, 58, 75, .18);
+  animation: say 1.5s ease forwards;
+}
+.say-bubble::after {
+  content: ''; position: absolute; left: 50%; top: 100%; transform: translateX(-50%);
+  border: 7px solid transparent; border-top-color: #fff;
+}
+.mood-sad .say-bubble { color: var(--muted); }
+.pet-stage.mini .say-bubble { font-size: 14px; padding: 6px 10px; }
+@keyframes say {
+  0%   { opacity: 0; transform: translate(-50%, 8px) scale(.5); }
+  14%  { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+  24%  { transform: translate(-50%, 0) scale(1); }
+  80%  { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -12px); }
+}

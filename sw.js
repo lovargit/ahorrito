@@ -1,5 +1,5 @@
 // Guarda la app en caché para que funcione sin internet, y muestra los recordatorios.
-const CACHE = 'ahorrito-v2';
+const CACHE = 'ahorrito-v3';
 const FILES = [
   './', 'index.html', 'styles.css', 'pets.js', 'app.js', 'manifest.json',
   'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'

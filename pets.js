@@ -23,7 +23,7 @@ const tear = (x, y) => `<path class="tear" d="M${x} ${y} q3.5 5.5 0 8.5 q-3.5 -3
 
 const PETS = {
   chihuahua: {
-    name: 'Chihuahua', the: 'el chihuahua', cheer: '¡Guau! 🐶',
+    name: 'Chihuahua', the: 'el chihuahua', cheer: '¡Guau! 🐶', say: '¡Guau!',
     svg() {
       const fur = '#E8B886', furDark = '#D9A06A', light = '#F7DEC1', pink = '#F4A28C';
       return `<svg class="pet" viewBox="0 0 200 200" aria-hidden="true">
@@ -64,7 +64,7 @@ const PETS = {
   },
 
   pug: {
-    name: 'Pug', the: 'el pug', cheer: '¡Guau guau! 🐶',
+    name: 'Pug', the: 'el pug', cheer: '¡Guau guau! 🐶', say: '¡Guau!',
     svg() {
       const fur = '#E9D2AA', furDark = '#D2B686', light = '#F5E7CF', mask = '#3B3431', nose = '#1C1716';
       return `<svg class="pet" viewBox="0 0 200 200" aria-hidden="true">
@@ -107,7 +107,7 @@ const PETS = {
   },
 
   dino: {
-    name: 'Dinosaurio', the: 'el dino', cheer: '¡Rawr! 🦖',
+    name: 'Dinosaurio', the: 'el dino', cheer: '¡Rawr! 🦖', say: '¡Rawr!',
     svg() {
       const fur = '#8FD19E', dark = '#70BB82', belly = '#E6F4D7', spike = '#F29E86', snout = '#A9DEB6';
       return `<svg class="pet" viewBox="0 0 200 200" aria-hidden="true">
@@ -150,7 +150,7 @@ const PETS = {
   },
 
   gato: {
-    name: 'Gato', the: 'el gatito', cheer: '¡Miau! 🐱',
+    name: 'Gato', the: 'el gatito', cheer: '¡Miau! 🐱', say: '¡Miau!',
     svg() {
       const fur = '#F4B47C', dark = '#E2925A', light = '#FCE7D2', pink = '#F4A28C';
       return `<svg class="pet" viewBox="0 0 200 200" aria-hidden="true">
@@ -199,4 +199,4 @@ const PETS = {
   },
 };
 
-const CUSTOM_PET = { name: 'Mi imagen', the: 'tu mascota', cheer: '¡Yupi! ✨' };
+const CUSTOM_PET = { name: 'Mi imagen', the: 'tu mascota', cheer: '¡Yupi! ✨', say: '¡Ahorra!' };
